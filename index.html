@@ -7,9 +7,9 @@
         body {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             height: 100vh;
-            margin: 20px 0 0;
+            margin: 0;
             font-family: 'Roboto', sans-serif;
         }
 
@@ -21,12 +21,14 @@
             max-width: 400px;
             padding: 20px;
             box-sizing: border-box;
+            margin-top: 20px; /* Add top margin */
         }
 
         .password-container {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
+            justify-content: flex-start;
         }
 
         .check-icon {
@@ -63,6 +65,9 @@
         #show-password-container {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            margin-bottom: 10px;
         }
 
         #show-password-checkbox {
@@ -83,24 +88,38 @@
             display: none; /* Initially hide the unhide icon */
         }
 
+        #password::placeholder {
+            color: #979797; /* Set the placeholder color to grey */
+        }
+
+        .requirements {
+            margin-top: 10px; /* Add top margin to requirements */
+            padding-left: 25px; /* Indent requirements */
+        }
+
         @media screen and (max-width: 480px) {
             .container {
-                font-size: 20px;
+                font-size: 16px; /* Smaller font size for phones */
             }
             .check-icon {
-                font-size: 24px;
+                font-size: 20px; /* Smaller font size for icons on phones */
             }
             .password-container {
-                margin-bottom: 15px;
+                margin-bottom: 12px; /* Increase spacing on phones */
+            }
+            #confirm-button {
+                padding: 16px 32px; /* Larger button size on phones */
+            }
+            .requirements {
+                padding-left: 20px; /* Adjust indent for phones */
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <label for="password">Password:</label>
         <div id="show-password-container">
-            <input type="password" id="password" onkeyup="validatePassword()" style="width: 100%; font-size: 18px;">
+            <input type="password" id="password" placeholder="Password" onkeyup="validatePassword()" style="width: 100%; font-size: 18px;">
             <label id="show-password-label">
                 <input type="checkbox" id="show-password-checkbox">
                 <i id="eye-icon" class="eye-icon fas fa-eye"></i>
