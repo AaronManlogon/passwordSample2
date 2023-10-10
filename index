@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 20px 0 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .password-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .check-icon {
+            color: #979797;
+            margin-right: 10px;
+        }
+
+        .check-icon.green {
+            color: #31a02b;
+        }
+
+        #confirm-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        #confirm-button {
+            padding: 12px 24px;
+            background-color: #c51f1f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        #confirm-button:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .password-field input {
+            width: 100%;
+            font-size: 18px;
+            padding-right: 40px; /* Space for the icon */
+        }
+
+        .password-field .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #979797; /* Set the color to grey */
+            cursor: pointer;
+        }
+
+        .eye-icon.fa-eye-slash {
+            display: none; /* Initially hide the unhide icon */
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                font-size: 20px;
+            }
+            .check-icon {
+                font-size: 24px;
+            }
+            .password-container {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="password">Password:</label>
+        <div class="password-field">
+            <input type="password" id="password" onkeyup="validatePassword()">
+            <i id="eye-icon" class="eye-icon fas fa-eye-slash" onclick="togglePasswordVisibility()"></i>
+            <i id="eye-slash-icon" class="eye-icon fas fa-eye" onclick="togglePasswordVisibility()" style="display: none;"></i>
+        </div>
+
+        <div class="password-container">
+            <i id="length-icon" class="check-icon fas fa-check-circle"></i>
+            <span>8 characters minimum</span>
+        </div>
+        <div class="password-container">
+            <i id="uppercase-icon" class="check-icon fas fa-check-circle"></i>
+            <span>At least one uppercase</span>
+        </div>
+        <div class="password-container">
+            <i id="numeric-icon" class="check-icon fas fa-check-circle"></i>
+            <span>At least one numeric</span>
+        </div>
+
+        <div id="confirm-button-container">
+            <button id="confirm-button" disabled>Confirm</button>
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById("password");
+        const eyeIcon = document.getElementById("eye-icon");
+        const eyeSlashIcon = document.getElementById("eye-slash-icon");
+
+        function togglePasswordVisibility() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text"; // Show the password
+                eyeIcon.style.display = "none";
+                eyeSlashIcon.style.display = "inline";
+            } else {
+                passwordInput.type = "password"; // Hide the password
+                eyeIcon.style.display = "inline";
+                eyeSlashIcon.style.display = "none";
+            }
+        }
+
+        function validatePassword() {
+            const password = passwordInput.value;
+
+            const isLengthValid = password.length >= 8;
+            const isUppercaseValid = /[A-Z]/.test(password);
+            const isNumericValid = /[0-9]/.test(password);
+
+            const lengthIcon = document.getElementById("length-icon");
+            const uppercaseIcon = document.getElementById("uppercase-icon");
+            const numericIcon = document.getElementById("numeric-icon");
+            const confirmButton = document.getElementById("confirm-button");
+
+            lengthIcon.className = isLengthValid ? "check-icon fas fa-check-circle green" : "check-icon fas fa-check-circle";
+            uppercaseIcon.className = isUppercaseValid ? "check-icon fas fa-check-circle green" : "check-icon fas fa-check-circle";
+            numericIcon.className = isNumericValid ? "check-icon fas fa-check-circle green" : "check-icon fas fa-check-circle";
+
+            const num = (isLengthValid ? 1 : 0) + (isUppercaseValid ? 1 : 0) + (isNumericValid ? 1 : 0);
+            confirmButton.disabled = num !== 3;
+        }
+    </script>
+</body>
+</html>
