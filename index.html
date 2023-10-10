@@ -5,23 +5,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
             font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0; /* Optional background color */
         }
 
         .container {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            width: 100%;
-            max-width: 400px;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
             padding: 20px;
+            margin: 100px 10px 0; /* Add margin to the left and right */
             box-sizing: border-box;
-            margin-top: 20px; /* Add top margin */
         }
 
         .password-container {
@@ -93,25 +91,28 @@
         }
 
         .requirements {
+            display: flex;
+            flex-direction: column; /* Display requirements as a vertical list */
+            align-items: flex-start;
             margin-top: 10px; /* Add top margin to requirements */
-            padding-left: 25px; /* Indent requirements */
+        }
+
+        .requirements-text {
+            margin-left: 10px;
         }
 
         @media screen and (max-width: 480px) {
             .container {
-                font-size: 16px; /* Smaller font size for phones */
+                font-size: 18px; /* Smaller font size for phones */
             }
             .check-icon {
-                font-size: 20px; /* Smaller font size for icons on phones */
+                font-size: 22px; /* Smaller font size for icons on phones */
             }
             .password-container {
-                margin-bottom: 12px; /* Increase spacing on phones */
+                margin-bottom: 14px; /* Increase spacing on phones */
             }
             #confirm-button {
                 padding: 16px 32px; /* Larger button size on phones */
-            }
-            .requirements {
-                padding-left: 20px; /* Adjust indent for phones */
             }
         }
     </style>
@@ -127,21 +128,23 @@
             </label>
         </div>
 
-        <div class="password-container">
-            <i id="length-icon" class="check-icon fas fa-check-circle"></i>
-            <span>8 characters minimum</span>
-        </div>
-        <div class="password-container">
-            <i id="uppercase-icon" class="check-icon fas fa-check-circle"></i>
-            <span>At least one uppercase</span>
-        </div>
-        <div class="password-container">
-            <i id="numeric-icon" class="check-icon fas fa-check-circle"></i>
-            <span>At least one numeric</span>
+        <div class="requirements">
+            <div class="password-container">
+                <i id="length-icon" class="check-icon fas fa-check-circle"></i>
+                <span class="requirements-text">8 characters minimum</span>
+            </div>
+            <div class="password-container">
+                <i id="uppercase-icon" class="check-icon fas fa-check-circle" style="margin-left: 0;"></i>
+                <span class="requirements-text">At least one uppercase</span>
+            </div>
+            <div class="password-container">
+                <i id="numeric-icon" class="check-icon fas fa-check-circle" style="margin-left: 0;"></i>
+                <span class="requirements-text">At least one numeric</span>
+            </div>
         </div>
 
         <div id="confirm-button-container">
-            <button id="confirm-button" disabled>Confirm</button>
+            <button id="confirm-button" disabled>CONFIRM</button>
         </div>
     </div>
 
