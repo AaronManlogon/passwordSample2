@@ -10,7 +10,12 @@
             font-family: 'Roboto', sans-serif;
             background-color: #f0f0f0;
         }
-
+		
+		img {
+			border-radius: 10px;
+			margin-top: 50px;
+			margin-bottom: 150px;
+		}
         .container {
             display: flex;
             flex-direction: column;
@@ -49,7 +54,7 @@
         #confirm-button {
 			font-size: 16px;
             padding: 12px 24px;
-            background-color: #c51f1f;
+            background-color: #720000;
             color: white;
             border: none;
             cursor: pointer;
@@ -124,6 +129,7 @@
 </head>
 <body>
     <div class="container">
+		<img src="31Logo.png" alt="Logo" style="max-width: 80%; height: auto;">
         <div id="show-password-container">
             <input type="password" id="password" placeholder="Password" onkeyup="validatePassword()" style="width: 100%;">
             <label id="show-password-label">
