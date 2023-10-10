@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #f0f0f0; /* Optional background color */
+            background-color: #f0f0f0;
         }
 
         .container {
@@ -18,7 +18,7 @@
             justify-content: flex-start;
             min-height: 100vh;
             padding: 20px;
-            margin: 100px 10px 0; /* Add margin to the left and right */
+            margin: 200px 10px 0;
             box-sizing: border-box;
         }
 
@@ -42,7 +42,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 20px;
+            margin-top: 40px;
             width: 100%;
         }
 
@@ -78,23 +78,23 @@
         }
 
         .eye-icon {
-            color: #979797; /* Set the color to grey */
+            color: #979797;
             cursor: pointer;
         }
 
         .eye-icon.fa-eye-slash {
-            display: none; /* Initially hide the unhide icon */
+            display: none;
         }
 
         #password::placeholder {
-            color: #979797; /* Set the placeholder color to grey */
+            color: #979797;
         }
 
         .requirements {
             display: flex;
-            flex-direction: column; /* Display requirements as a vertical list */
+            flex-direction: column;
             align-items: flex-start;
-            margin-top: 10px; /* Add top margin to requirements */
+            margin-top: 10px;
         }
 
         .requirements-text {
@@ -103,16 +103,20 @@
 
         @media screen and (max-width: 480px) {
             .container {
-                font-size: 18px; /* Smaller font size for phones */
+                font-size: 18px;
             }
             .check-icon {
-                font-size: 22px; /* Smaller font size for icons on phones */
+                font-size: 22px;
             }
             .password-container {
-                margin-bottom: 14px; /* Increase spacing on phones */
+                margin-bottom: 14px;
             }
             #confirm-button {
-                padding: 16px 32px; /* Larger button size on phones */
+                padding: 16px 32px;
+            }
+            #password {
+                font-size: 20px;
+                padding: 10px;
             }
         }
     </style>
@@ -120,7 +124,7 @@
 <body>
     <div class="container">
         <div id="show-password-container">
-            <input type="password" id="password" placeholder="Password" onkeyup="validatePassword()" style="width: 100%; font-size: 18px;">
+            <input type="password" id="password" placeholder="Password" onkeyup="validatePassword()" style="width: 100%;">
             <label id="show-password-label">
                 <input type="checkbox" id="show-password-checkbox">
                 <i id="eye-icon" class="eye-icon fas fa-eye"></i>
@@ -154,17 +158,16 @@
         const eyeIcon = document.getElementById("eye-icon");
         const eyeSlashIcon = document.getElementById("eye-slash-icon");
 
-        // Initially hide the password
         passwordInput.type = "password";
         eyeSlashIcon.style.display = "none";
 
         showPasswordCheckbox.addEventListener("change", function() {
             if (showPasswordCheckbox.checked) {
-                passwordInput.type = "text"; // Show the password
+                passwordInput.type = "text";
                 eyeIcon.style.display = "none";
                 eyeSlashIcon.style.display = "inline";
             } else {
-                passwordInput.type = "password"; // Hide the password
+                passwordInput.type = "password";
                 eyeIcon.style.display = "inline";
                 eyeSlashIcon.style.display = "none";
             }
