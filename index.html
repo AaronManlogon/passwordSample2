@@ -47,7 +47,7 @@
         }
 
         #confirm-button {
-			font-size: 18px;
+			font-size: 16px;
             padding: 12px 24px;
             background-color: #c51f1f;
             color: white;
@@ -149,7 +149,7 @@
         </div>
 
         <div id="confirm-button-container">
-            <button id="confirm-button" disabled>Confirm</button>
+            <button id="confirm-button" disabled>CONFIRM</button>
         </div>
     </div>
 
@@ -158,6 +158,12 @@
         const showPasswordCheckbox = document.getElementById("show-password-checkbox");
         const eyeIcon = document.getElementById("eye-icon");
         const eyeSlashIcon = document.getElementById("eye-slash-icon");
+		const confirmButton = document.getElementById("confirm-button");
+
+        confirmButton.addEventListener("click", function() {
+            // Change the background color to #720000 when clicked
+            confirmButton.style.backgroundColor = "#720000";
+        });
 
         passwordInput.type = "password";
         eyeSlashIcon.style.display = "none";
